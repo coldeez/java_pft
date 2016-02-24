@@ -14,3 +14,4 @@ gradle-app.setting
 *.iml
 .idea/codeStyleSettings.xml
 sandbox/sandbox.iml
+.idea/misc.xml
