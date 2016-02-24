@@ -1,5 +1,7 @@
 package ru.stqa.pft.sandbox;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 public class MyFirstProgram {
 	
 	public static void main(String[] args){
@@ -13,13 +15,13 @@ public class MyFirstProgram {
 		Rectangle r = new Rectangle(4,6);
 
 		System.out.println("Площадь прямоугольника со сторонам " + r.a + " и " + r.b + " = " + r.area());
-
 	}
 
 	public static void hello(String somebody) {
 		System.out.println("hello, " + somebody + "!");
 
 	}
+
 
 
 }
