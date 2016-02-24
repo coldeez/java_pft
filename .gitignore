@@ -10,3 +10,7 @@ gradle-app.setting
 # Cache of project
 .gradletasknamecache
 .idea/workspace.xml
+.idea/codeStyleSettings.xml
+*.iml
+.idea/codeStyleSettings.xml
+sandbox/sandbox.iml
