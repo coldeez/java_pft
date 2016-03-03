@@ -25,4 +25,8 @@ public class NavigationHelper extends HelperBase {
   public void acceptAlert(ApplicationManager applicationManager) {
     applicationManager.wd.switchTo().alert().accept();
   }
+
+  public void returnToHomePage() {
+    click(By.linkText("home page"));
+  }
 }
