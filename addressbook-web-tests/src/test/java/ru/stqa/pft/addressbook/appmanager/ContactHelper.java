@@ -31,4 +31,13 @@ public class ContactHelper extends HelperBase {
   public void initAccountCreation() {
     click(By.linkText("add new"));
   }
+
+
+  public void selectContact() {
+    click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[1]/input"));
+  }
+
+  public void clickDeleteButton() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
 }
