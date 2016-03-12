@@ -10,7 +10,10 @@ public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification(){
-    app.getNavigationHelper().goToHomePage();
+    app.getContactHelper().goToHomePage();
+    if (! app.getContactHelper().isThereAContact()) {
+      app.getContactHelper().createGroup(new ContactData("test1", "test2", "testmail1@mail.ru", "City, street, flat", "testmail2@mail.ru", "+1234567890", "+9061234567", "test1"), true);
+    }
     app.getContactHelper().editContact();
     app.getContactHelper().fillContactForm(new ContactData("test1m", "test2m", "testmail1@mail.rum", "Citym, streetm, flatm", "testmail2@mail.rum", "+1234567890m", "+9061234567m", null), false);
     app.getContactHelper().updateContact();
