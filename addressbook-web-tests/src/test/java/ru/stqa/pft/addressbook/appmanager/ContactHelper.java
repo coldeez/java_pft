@@ -43,8 +43,6 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home"));
   }
 
-
-
   public void initAccountCreation() {
     click(By.linkText("add new"));
   }
