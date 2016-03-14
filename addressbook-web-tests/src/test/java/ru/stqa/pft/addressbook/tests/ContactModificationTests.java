@@ -11,7 +11,7 @@ public class ContactModificationTests extends TestBase {
   @Test
   public void testContactModification(){
     app.getContactHelper().goToHomePage();
-    if (! app.getContactHelper().isThereAContact()) {
+    if (! app.getContactHelper().isThereAContact()) {  /*проверка на наличие хотя бы одного контакта*/
       app.getContactHelper().createGroup(new ContactData("test1", "test2", "testmail1@mail.ru", "City, street, flat", "testmail2@mail.ru", "+1234567890", "+9061234567", "test1"), true);
     }
     app.getContactHelper().editContact();

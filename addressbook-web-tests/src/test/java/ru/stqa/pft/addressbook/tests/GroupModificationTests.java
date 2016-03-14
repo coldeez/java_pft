@@ -11,7 +11,7 @@ public class GroupModificationTests extends TestBase {
    @Test
    public void testGroupModification(){
      app.getNavigationHelper().goToGroupPage();
-       if (! app.getGroupHelper().isThereAGroup()) {
+       if (! app.getGroupHelper().isThereAGroup()) { /*проверка на наличие хотя бы одной группы*/
            app.getGroupHelper().createGroup(new GroupData("test1", null, null));
        }
      app.getGroupHelper().selectGroup();

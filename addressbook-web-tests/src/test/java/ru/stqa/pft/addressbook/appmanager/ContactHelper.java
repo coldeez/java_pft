@@ -29,7 +29,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("home"),contactData.getHomephone());
     type(By.name("mobile"),contactData.getMobilephone());
 
-    if (creation) {
+    if (creation) { /*проверка текущей страницы по наличию контрола добавления группы*/
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -37,7 +37,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void goToHomePage() {
-    if (isElementPresent(By.id("maintable"))) {
+    if (isElementPresent(By.id("maintable"))) { /*проверка текущей страницы по id таблицы*/
       return;
     }
     click(By.linkText("home"));
