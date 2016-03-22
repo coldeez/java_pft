@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -25,14 +26,11 @@ public class ContactDeletionTests extends TestBase {
   app.getContactHelper().clickDeleteButton();
   app.navigationHelper.acceptAlert(app);
   app.getContactHelper().goToHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+  List<ContactData> after = app.getContactHelper().getContactList();
   if (before.size() == 0) {
     Assert.assertEquals(after.size(), before.size());
   }
   else Assert.assertEquals(after.size(), before.size() - 1);
-
-
-
 
   }
 }
