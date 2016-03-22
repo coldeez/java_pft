@@ -19,10 +19,13 @@ public class ContactDeletionTests extends TestBase {
       app.getContactHelper().createGroup(new ContactData("test1", "test2", "testmail1@mail.ru", "City, street, flat", "testmail2@mail.ru", "+1234567890", "+9061234567", "test2"), true);
     }
   List<ContactData> before = app.getContactHelper().getContactList();
+  app.getContactHelper().selectContact(before.size() -1);
   app.getContactHelper().clickDeleteButton();
   app.navigationHelper.acceptAlert(app);
   app.getContactHelper().goToHomePage();
   List<ContactData> after = app.getContactHelper().getContactList();
   Assert.assertEquals(after.size(), before.size() - 1);
+  before.remove(before.size() - 1);
+    Assert.assertEquals(after,before);
   }
 }
