@@ -23,6 +23,21 @@ public class ContactData {
     this.group = group;
   }
 
+
+  public ContactData(int id, String firstname, String lastname, String mail1, String address, String mail2, String homephone, String mobilephone, String group) {
+    this.id = id;
+    this.firstname = firstname;
+
+    this.lastname = lastname;
+
+    this.mail1 = mail1;
+    this.address = address;
+    this.mail2 = mail2;
+    this.homephone = homephone;
+    this.mobilephone = mobilephone;
+    this.group = group;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -30,7 +45,6 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
-    if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
     return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
 
@@ -40,21 +54,7 @@ public class ContactData {
   public int hashCode() {
     int result = firstname != null ? firstname.hashCode() : 0;
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-    result = 31 * result + id;
     return result;
-  }
-
-  public ContactData(int id, String firstname, String lastname, String mail1, String address, String mail2, String homephone, String mobilephone, String group) {
-    this.id = id;
-    this.firstname = firstname;
-    this.lastname = lastname;
-
-    this.mail1 = mail1;
-    this.address = address;
-    this.mail2 = mail2;
-    this.homephone = homephone;
-    this.mobilephone = mobilephone;
-    this.group = group;
   }
 
   public String getFirstname() {
@@ -107,4 +107,8 @@ public class ContactData {
   public int getId() {
     return id;
   }
+  public void setId(int id) {
+    this.id = id;
+  }
 }
+
