@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +39,14 @@ public class ContactHelper extends HelperBase {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
+  public void modify(List<ContactData> before, int index, ContactData contact) {
+    selectContact(before.size() -1);
+    editContact(before.get(index).getId());
+    fillContactForm(contact, false);
+    updateContact();
+  }
 
-  public void goToHomePage() {
+  public void homePage() {
     if (isElementPresent(By.id("maintable"))) { /*проверка текущей страницы по id таблицы*/
       return;
     }
@@ -72,12 +77,21 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
 
-  public void createGroup(ContactData contact, boolean b) {
+  public void create(ContactData contact, boolean b) {
     initAccountCreation();
     fillContactForm(contact, b);
     submitContactCreation();
-    goToHomePage();
+    homePage();
   }
+
+  public void delete(int index) {
+    selectContact(index);
+    clickDeleteButton();
+    acceptAlert();
+    homePage();
+  }
+
+
 
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
@@ -89,7 +103,7 @@ public class ContactHelper extends HelperBase {
   }
 
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     List<WebElement> lastnameContainer = wd.findElements(By.xpath("//td[3]"));
