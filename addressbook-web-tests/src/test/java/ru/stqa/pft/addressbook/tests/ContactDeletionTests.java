@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -27,12 +28,7 @@ public class ContactDeletionTests extends TestBase {
   app.contact().delete(index);
   List<ContactData> after = app.contact().list();
   Assert.assertEquals(after.size(), before.size() - 1);
-<<<<<<< HEAD
-  before.remove(before.size() - 1);
-  Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
-=======
   before.remove(index);
-    Assert.assertEquals(after,before);
->>>>>>> origin/master
+  Assert.assertEquals(after,before);
   }
 }
