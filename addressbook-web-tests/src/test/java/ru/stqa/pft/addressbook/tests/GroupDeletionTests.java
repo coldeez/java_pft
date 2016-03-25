@@ -18,16 +18,12 @@ public class GroupDeletionTests extends TestBase {
         app.goTo().groupPage();
 
         if (app.group().list().size() == 0) { /*проверка на наличие хотя бы одной группы*/
-            app.group().create(new GroupData("test1", null, null));
+            app.group().create(new GroupData().withName("test2"));
         }
     }
 
     @Test
     public void testGroupDeletion() {
-        app.goTo().groupPage();
-         if (! app.group().isThereAGroup()) { /*проверка на наличие хотя бы одной группы*/
-            app.group().create(new GroupData("test1", null, null));
-        }
         List<GroupData> before = app.group().list();
         int index = before.size() - 1;
         app.group().delete(index);
