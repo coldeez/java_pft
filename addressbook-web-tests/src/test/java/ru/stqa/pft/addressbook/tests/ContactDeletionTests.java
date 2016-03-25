@@ -17,10 +17,11 @@ public class ContactDeletionTests extends TestBase {
   public void ensurePreconditions () {
     app.contact().homePage();
     if ( app.contact().list().size() == 0) {  /*проверка на наличие хотя бы одного контакта*/
-      app.contact().create(new ContactData("test1", "test2", "testmail1@mail.ru", "City, street, flat", "testmail2@mail.ru", "+1234567890", "+9061234567", "test2"), true);
+      app.contact().create(new ContactData().
+              withFirstname("test1").withLastname("test2").withMail1("testmail1@mail.ru").withAddress("City, street, flat").
+              withMail2("testmail2@mail.ru").withHomephone("+1234567890").withMobilephone("+9061234567").withGroup("test2"), true);
     }
   }
-
   @Test
   public void testContactDeletion() {
   List<ContactData> before = app.contact().list();

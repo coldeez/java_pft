@@ -18,17 +18,17 @@ public class ContactModificationTests extends TestBase {
    public void ensurePreconditions () {
     app.contact().homePage();
     if ( app.contact().list().size() == 0) {  /*проверка на наличие хотя бы одного контакта*/
-      app.contact().create(new ContactData("test1", "test2", "testmail1@mail.ru", "City, street, flat", "testmail2@mail.ru", "+1234567890", "+9061234567", "test2"), true);
+      app.contact().create(new ContactData().
+              withFirstname("test1").withLastname("test2").withMail1("testmail1@mail.ru").withAddress("City, street, flat").
+              withMail2("testmail2@mail.ru").withHomephone("+1234567890").withMobilephone("+9061234567").withGroup("test2"), true);
     }
   }
-
-
-
   @Test
   public void testContactModification(){
     List<ContactData> before = app.contact().list();
     int index = before.size()-1;
-    ContactData contact = new ContactData(before.get(index).getId(),"test1m", "test2m", "testmail1@mail.rum", "Citym, streetm, flatm", "testmail2@mail.rum", "+1234567890m", "+9061234567m", "test2");
+    ContactData contact = new ContactData().withId(before.get(index).getId()).withFirstname("test1").withLastname("test2").withMail1("testmail1@mail.ru").withAddress("City, street, flat").
+            withMail2("testmail2@mail.ru").withHomephone("+1234567890").withMobilephone("+9061234567").withGroup("test2");
     app.contact().modify(before, index, contact);
     app.goTo().returnToHomePage();
     List<ContactData> after = app.contact().list();
