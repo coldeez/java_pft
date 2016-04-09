@@ -9,6 +9,8 @@ public class ContactData {
   private String mail2;
   private String homephone;
   private String mobilephone;
+
+
   private String workphone;
 
 
@@ -78,6 +80,10 @@ public class ContactData {
   public String getMobilephone() {
     return mobilephone;
   }
+  public String getWorkphone() {
+    return workphone;
+  }
+
 
   public String getGroup() {
     return group;
