@@ -151,4 +151,31 @@ public class ContactHelper extends HelperBase {
     List <WebElement> cells = row.findElements((By.tagName("td")));
     cells.get(7).findElement(By.tagName("a")).click();
   }
+
+  public ContactData infoFromContactDetailedPage(ContactData contact) {
+    initContactDetailedPageViewById(contact.getId());
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    String email1 = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
+            .withHomephone(home).withMobilephone(mobile).withWorkphone(work)
+            .withMail1(email1).withMail2(email2).withMail3(email3).withAddress(address);
+  }
+
+
+
+  private void initContactDetailedPageViewById(int id) {
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List <WebElement> cells = row.findElements((By.tagName("td")));
+    cells.get(6).findElement(By.tagName("a")).click();
+  }
+
 }

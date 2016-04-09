@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactAddressTests extends TestBase{
 
   @Test
-  public void testContactPhones() {
+  public void testContactAdress() {
     app.contact().homePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);

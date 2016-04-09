@@ -15,7 +15,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactEmailTests extends TestBase{
 
   @Test
-  public void testContactPhones() {
+  public void testContactEmail() {
     app.contact().homePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
