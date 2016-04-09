@@ -9,9 +9,18 @@ public class ContactData {
   private String mail2;
   private String homephone;
   private String mobilephone;
-
-
   private String workphone;
+  private String allPhones;
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
 
 
   @Override
@@ -143,8 +152,6 @@ public class ContactData {
     this.group = group;
     return this;
   }
-
-
 
 }
 
