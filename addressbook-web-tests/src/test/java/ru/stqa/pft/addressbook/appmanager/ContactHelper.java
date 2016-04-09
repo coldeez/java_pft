@@ -8,10 +8,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by kbal on 03.03.2016.
@@ -31,8 +28,8 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"),contactData.getFirstname());
     type(By.name("lastname"),contactData.getLastname());
     type(By.name("address"),contactData.getAddress());
-    type(By.name("email"),contactData.getMail1());
-    type(By.name("email2"),contactData.getMail2());
+    type(By.name("email"),contactData.getEmail1());
+    type(By.name("email2"),contactData.getEmail2());
     type(By.name("home"),contactData.getHomephone());
     type(By.name("mobile"),contactData.getMobilephone());
 
@@ -113,15 +110,19 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = wd.findElements(By.name("entry"));
     List<WebElement> lastnameContainer = wd.findElements(By.xpath("//td[2]"));
     List<WebElement> firstnameContainer = wd.findElements(By.xpath("//td[3]"));
+    List<WebElement> addressContainer = wd.findElements(By.xpath("//td[4]"));
+    List<WebElement> emailContainer = wd.findElements(By.xpath("//td[5]"));
     List<WebElement> phoneContainer = wd.findElements(By.xpath("//td[6]"));
 
     for (int i = 0; i < lastnameContainer.size(); i++) {
       String lastname = lastnameContainer.get(i).getText();
       String firstname = firstnameContainer.get(i).getText();
+      String address = addressContainer.get(i).getText();
+      String allEmails = emailContainer.get(i).getText();
       String allPhones = phoneContainer.get(i).getText();
       int id = Integer.parseInt(elements.get(i).findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname).
-              withAllPhones(allPhones));
+      contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname)
+              .withAddress(address).withAllEmails(allEmails).withAllPhones(allPhones).withAddress(address));
     }
     return contacts;
   }
@@ -134,9 +135,14 @@ public class ContactHelper extends HelperBase {
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
+    String email1 = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
-            .withHomephone(home).withMobilephone(mobile).withWorkphone(work);
+            .withHomephone(home).withMobilephone(mobile).withWorkphone(work)
+            .withMail1(email1).withMail2(email2).withMail3(email3).withAddress(address);
   }
 
   private void initContactModificationById(int id) {
