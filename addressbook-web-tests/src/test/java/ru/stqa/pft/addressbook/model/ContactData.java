@@ -12,6 +12,8 @@ public class ContactData {
   private String mobilephone;
   private String workphone;
   private String allPhones;
+  private String details;
+  private String fullname;
 
   public String getAllEmails() {
     return allEmails;
@@ -173,6 +175,21 @@ public class ContactData {
     this.mail3 = mail3;
     return this;
   }
+
+  public ContactData withDetails(String details) {
+    this.details = details;
+    return this;
+  }
+  public String getDetails() {
+    return details;
+  }
+
+  public String getFullname() {
+    fullname = getFirstname() + " " + getLastname();
+    return fullname;
+  }
+
+
 
 }
 

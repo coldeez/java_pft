@@ -3,6 +3,9 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -11,13 +14,37 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class ContactDetailedPageTests extends TestBase {
 
+
   @Test
-  private void testContactDetailedPage() {
+  public void testContactDetail() {
     app.contact().homePage();
     ContactData contact = app.contact().all().iterator().next();
-    ContactData contactInfoFromDetailedPage = app.contact().infoFromContactDetailedPage(contact);
-    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromDetailedPage)));
+    ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+    ContactData contactInfoFromDetails = app.contact().infoFromContactDetailedPage(contact);
+    assertThat(mergeFromEditForm(contactInfoFromEditForm), equalTo(cleaned(contactInfoFromDetails.getDetails())));
+  }
+
+  public String cleaned(String detail) {
+    return detail.replaceAll("\n\n", "\n");
+  }
 
 
+  private String mergeFromEditForm(ContactData contact) {
+    String homePhone = contact.getHomephone();
+    String mobilePhone = contact.getMobilephone();
+    String workPhone = contact.getWorkphone();
+    if (homePhone != "") {
+      homePhone = "H: " + homePhone;
+    }
+    if (mobilePhone != "") {
+      mobilePhone = "M: " + mobilePhone;
+    }
+    if (workPhone != "") {
+      workPhone = "W: " + workPhone;
+    }
+    return Arrays.asList(contact.getFullname(), contact.getAddress(), "",
+            homePhone, mobilePhone, workPhone, "",
+            contact.getEmail1(), contact.getEmail2(), contact.getEmail3(), "\n\n")
+            .stream().collect(Collectors.joining("\n"));
   }
 }
