@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
+import java.io.File;
+
 public class ContactData {
   private int id = Integer.MAX_VALUE;
   private String firstname;
@@ -15,7 +17,7 @@ public class ContactData {
   private String details;
   private String fullname;
   private String fullEmail;
-
+  private File  photo;
   public String getAllEmails() {
     return allEmails;
   }
@@ -192,11 +194,25 @@ public class ContactData {
 
 
   public String getFullEmail(String email) {
+    if (email.isEmpty()) {
+      return  email;
+    }
+
     String domain = email.replaceAll("\\w+\\@","");
     fullEmail = email + " (www." + domain +")";
     return fullEmail;
+    }
+
+
+
+  public File getPhoto() {
+    return photo;
   }
 
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
 
 }
 

@@ -33,13 +33,13 @@ public class ContactDetailedPageTests extends TestBase {
     String homePhone = contact.getHomephone();
     String mobilePhone = contact.getMobilephone();
     String workPhone = contact.getWorkphone();
-    if (homePhone != "") {
+    if (homePhone.length() > 0) {
       homePhone = "H: " + homePhone;
     }
-    if (mobilePhone != "") {
+    if (mobilePhone.length() > 0) {
       mobilePhone = "M: " + mobilePhone;
     }
-    if (workPhone != "") {
+    if (workPhone.length() > 0) {
       workPhone = "W: " + workPhone;
     }
     return Arrays.asList(contact.getFullname(), contact.getAddress(), "",

@@ -32,6 +32,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("email2"),contactData.getEmail2());
     type(By.name("home"),contactData.getHomephone());
     type(By.name("mobile"),contactData.getMobilephone());
+    attach(By.name("photo"), contactData.getPhoto());
 
     if (creation) { /*проверка текущей страницы по наличию контрола добавления группы*/
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -154,7 +155,9 @@ public class ContactHelper extends HelperBase {
 
   public ContactData infoFromContactDetailedPage(ContactData contact) {
     initContactDetailedPageViewById(contact.getId());
-    String details = wd.findElement(By.xpath("//*[@id='content']")).getText();
+    String detailsContent = wd.findElement(By.xpath("//*[@id='content']")).getText();
+    String errors = wd.findElement(By.xpath("//*[@id='content']/i")).getText();
+    String details = detailsContent.replace(errors,"");
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withDetails(details);
   }
