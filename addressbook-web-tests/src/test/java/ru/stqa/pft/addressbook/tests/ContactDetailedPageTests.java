@@ -21,11 +21,11 @@ public class ContactDetailedPageTests extends TestBase {
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     ContactData contactInfoFromDetails = app.contact().infoFromContactDetailedPage(contact);
-    assertThat(mergeFromEditForm(contactInfoFromEditForm), equalTo(cleaned(contactInfoFromDetails.getDetails())));
+    assertThat(cleaned(mergeFromEditForm(contactInfoFromEditForm)), equalTo(cleaned(contactInfoFromDetails.getDetails())));
   }
 
   public String cleaned(String detail) {
-    return detail.replaceAll("\n\n", "\n");
+    return detail.replaceAll("\\s","");
   }
 
 
@@ -44,7 +44,7 @@ public class ContactDetailedPageTests extends TestBase {
     }
     return Arrays.asList(contact.getFullname(), contact.getAddress(), "",
             homePhone, mobilePhone, workPhone, "",
-            contact.getEmail1(), contact.getEmail2(), contact.getEmail3(), "\n\n")
-            .stream().collect(Collectors.joining("\n"));
+            contact.getFullEmail(contact.getEmail1()), contact.getFullEmail(contact.getEmail2()), contact.getFullEmail(contact.getEmail3()), "\n\n")
+            .stream().collect(Collectors.joining(""));
   }
 }

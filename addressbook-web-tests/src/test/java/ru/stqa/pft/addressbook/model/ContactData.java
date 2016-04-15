@@ -14,6 +14,7 @@ public class ContactData {
   private String allPhones;
   private String details;
   private String fullname;
+  private String fullEmail;
 
   public String getAllEmails() {
     return allEmails;
@@ -189,6 +190,12 @@ public class ContactData {
     return fullname;
   }
 
+
+  public String getFullEmail(String email) {
+    String domain = email.replaceAll("\\w+\\@","");
+    fullEmail = email + " (www." + domain +")";
+    return fullEmail;
+  }
 
 
 }
