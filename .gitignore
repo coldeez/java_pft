@@ -15,3 +15,4 @@ gradle-app.setting
 .idea/codeStyleSettings.xml
 sandbox/sandbox.iml
 .idea/misc.xml
+*.log
