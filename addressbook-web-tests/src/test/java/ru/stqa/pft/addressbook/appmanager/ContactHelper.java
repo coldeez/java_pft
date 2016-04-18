@@ -34,11 +34,15 @@ public class ContactHelper extends HelperBase {
     type(By.name("mobile"),contactData.getMobilephone());
     attach(By.name("photo"), contactData.getPhoto());
 
-    if (creation) { /*проверка текущей страницы по наличию контрола добавления группы*/
+/*
+    if (creation) { */
+/*проверка текущей страницы по наличию контрола добавления группы*//*
+
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
+*/
   }
   public void modify(ContactData contact) {
     int contactId = contact.getId();
