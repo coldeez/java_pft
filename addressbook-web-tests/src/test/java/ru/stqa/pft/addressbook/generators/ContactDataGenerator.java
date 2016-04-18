@@ -6,17 +6,17 @@ import com.beust.jcommander.ParameterException;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by kbal on 16.04.2016.
  */
 public class ContactDataGenerator {
+
+  private Properties properties;
 
   @Parameter(names = "-c", description = "Contact count")
   public int count;
@@ -43,6 +43,9 @@ public class ContactDataGenerator {
 
 
   private void run() throws IOException {
+    properties = new Properties();
+    String target = System.getProperty("target", "local");
+    properties.load(new FileReader((new File(String.format("src/test/resources/%s.properties", target)))));
     List<ContactData> contacts = generateContacts(count);
     if (format.equals("csv")) {
       saveAsCsv(contacts, new File(file));
@@ -55,7 +58,7 @@ public class ContactDataGenerator {
 
 
   private List<ContactData> generateContacts(int count){
-    File photo = new File("src/test/resources/sands.jpg");
+    File photo = new File(properties.getProperty("generator.contactPhoto"));
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i = 0; i < count; i++ ) {
       contacts.add(new ContactData().withFirstname(String.format("firstname %s", i)).withLastname(String.format("lastname %s", i))

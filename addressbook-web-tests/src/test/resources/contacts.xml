@@ -7,7 +7,7 @@
     <address>City, street, flat 0</address>
     <homephone>1234560</homephone>
     <mobilephone>906123456 0</mobilephone>
-    <photo>src\test\resources\sands.jpg</photo>
+    <photo>src\test\resources\sands1.jpg</photo>
   </contact>
   <contact>
     <firstname>firstname 1</firstname>
@@ -17,7 +17,7 @@
     <address>City, street, flat 1</address>
     <homephone>1234561</homephone>
     <mobilephone>906123456 1</mobilephone>
-    <photo>src\test\resources\sands.jpg</photo>
+    <photo>src\test\resources\sands1.jpg</photo>
   </contact>
   <contact>
     <firstname>firstname 2</firstname>
@@ -27,6 +27,6 @@
     <address>City, street, flat 2</address>
     <homephone>1234562</homephone>
     <mobilephone>906123456 2</mobilephone>
-    <photo>src\test\resources\sands.jpg</photo>
+    <photo>src\test\resources\sands1.jpg</photo>
   </contact>
 </list>
