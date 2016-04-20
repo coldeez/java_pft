@@ -11,28 +11,4 @@
     <workphone>44440</workphone>
     <photo>src\test\resources\sands.jpg</photo>
   </contact>
-  <contact>
-    <firstname>firstname1</firstname>
-    <lastname>lastname1</lastname>
-    <mail1>1test1@mail.ru</mail1>
-    <mail2>1test2@mail.ru</mail2>
-    <mail3>1test3@mail.ru</mail3>
-    <address>City, street, flat1</address>
-    <homephone>1234561</homephone>
-    <mobilephone>9061234561</mobilephone>
-    <workphone>44441</workphone>
-    <photo>src\test\resources\sands.jpg</photo>
-  </contact>
-  <contact>
-    <firstname>firstname2</firstname>
-    <lastname>lastname2</lastname>
-    <mail1>2test1@mail.ru</mail1>
-    <mail2>2test2@mail.ru</mail2>
-    <mail3>2test3@mail.ru</mail3>
-    <address>City, street, flat2</address>
-    <homephone>1234562</homephone>
-    <mobilephone>9061234562</mobilephone>
-    <workphone>44442</workphone>
-    <photo>src\test\resources\sands.jpg</photo>
-  </contact>
 </list>
