@@ -11,6 +11,7 @@ import java.io.File;
 @XStreamAlias("contact")
 @Entity
 @Table (name = "addressbook")
+
 public class ContactData {
   @XStreamOmitField
   @Id
@@ -23,12 +24,14 @@ public class ContactData {
   @Column(name = "email")
   @Type(type = "text")
   private String mail1;
+
   @Column(name = "email2")
   @Type(type = "text")
   private String mail2;
   @Column(name = "email3")
   @Type(type = "text")
   private String mail3;
+
   @Column(name = "address")
   @Type(type = "text")
   private String address;
@@ -43,14 +46,15 @@ public class ContactData {
   private String workphone;
   @Transient
   private String allPhones;
+
   @Transient
+
   private String details;
   @Transient
   private String fullname;
   @Transient
   private String fullEmail;
-  @Column(name = "photo")
-  @Type(type = "text")
+  @Transient
   private String  photo;
   @Transient
   private String allEmails;
@@ -65,29 +69,6 @@ public class ContactData {
 
   public String getAllPhones() {
     return allPhones;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData that = (ContactData) o;
-
-    if (id != that.id) return false;
-    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id;
-    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
-    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-    return result;
   }
 
 
@@ -120,22 +101,6 @@ public class ContactData {
 
   public String getEmail2() {
     return mail2;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            ", mail1='" + mail1 + '\'' +
-            ", address='" + address + '\'' +
-            ", mail2='" + mail2 + '\'' +
-            ", homephone='" + homephone + '\'' +
-            ", mobilephone='" + mobilephone + '\'' +
-            ", workphone='" + workphone + '\'' +
-            ", group='" + group + '\'' +
-            ", photo='" + photo + '\'' +
-            '}';
   }
 
   public String getHomephone() {
@@ -212,6 +177,41 @@ public class ContactData {
     return mail3;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (id != that.id) return false;
+    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+    if (mail1 != null ? !mail1.equals(that.mail1) : that.mail1 != null) return false;
+    if (mail2 != null ? !mail2.equals(that.mail2) : that.mail2 != null) return false;
+    if (mail3 != null ? !mail3.equals(that.mail3) : that.mail3 != null) return false;
+    if (address != null ? !address.equals(that.address) : that.address != null) return false;
+    if (homephone != null ? !homephone.equals(that.homephone) : that.homephone != null) return false;
+    if (mobilephone != null ? !mobilephone.equals(that.mobilephone) : that.mobilephone != null) return false;
+    return workphone != null ? workphone.equals(that.workphone) : that.workphone == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (mail1 != null ? mail1.hashCode() : 0);
+    result = 31 * result + (mail2 != null ? mail2.hashCode() : 0);
+    result = 31 * result + (mail3 != null ? mail3.hashCode() : 0);
+    result = 31 * result + (address != null ? address.hashCode() : 0);
+    result = 31 * result + (homephone != null ? homephone.hashCode() : 0);
+    result = 31 * result + (mobilephone != null ? mobilephone.hashCode() : 0);
+    result = 31 * result + (workphone != null ? workphone.hashCode() : 0);
+    return result;
+  }
+
   public ContactData withMail3(String mail3) {
     this.mail3 = mail3;
     return this;
@@ -220,6 +220,7 @@ public class ContactData {
   public ContactData withDetails(String details) {
     this.details = details;
     return this;
+
   }
   public String getDetails() {
     return details;
@@ -229,7 +230,6 @@ public class ContactData {
     fullname = getFirstname() + " " + getLastname();
     return fullname;
   }
-
 
   public String getFullEmail(String email) {
     if (email.isEmpty()) {
@@ -242,7 +242,6 @@ public class ContactData {
     }
 
 
-
   public File getPhoto() {
     return new File(photo);
   }
@@ -250,6 +249,18 @@ public class ContactData {
   public ContactData withPhoto(File photo) {
     this.photo = photo.getPath();
     return this;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", mail1='" + mail1 + '\'' +
+            ", mail2='" + mail2 + '\'' +
+            ", mail3='" + mail3 + '\'' +
+            '}';
   }
 
 }
