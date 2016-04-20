@@ -241,16 +241,6 @@ public class ContactData {
     return fullEmail;
     }
 
-
-  public File getPhoto() {
-    return new File(photo);
-  }
-
-  public ContactData withPhoto(File photo) {
-    this.photo = photo.getPath();
-    return this;
-  }
-
   @Override
   public String toString() {
     return "ContactData{" +
@@ -260,7 +250,20 @@ public class ContactData {
             ", mail1='" + mail1 + '\'' +
             ", mail2='" + mail2 + '\'' +
             ", mail3='" + mail3 + '\'' +
+            ", address='" + address + '\'' +
+            ", homephone='" + homephone + '\'' +
+            ", mobilephone='" + mobilephone + '\'' +
+            ", workphone='" + workphone + '\'' +
             '}';
+  }
+
+  public File getPhoto() {
+    return new File(photo);
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo.getPath();
+    return this;
   }
 
 }
