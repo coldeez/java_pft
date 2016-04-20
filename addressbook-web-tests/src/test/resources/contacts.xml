@@ -1,37 +1,37 @@
 <list>
   <contact>
-    <firstname>firstname 0</firstname>
-    <lastname>lastname 0</lastname>
+    <firstname>firstname0</firstname>
+    <lastname>lastname0</lastname>
     <mail1>0test1@mail.ru</mail1>
     <mail2>0test2@mail.ru</mail2>
     <mail3>0test3@mail.ru</mail3>
-    <address>City, street, flat 0</address>
+    <address>City, street, flat0</address>
     <homephone>1234560</homephone>
-    <mobilephone>906123456 0</mobilephone>
+    <mobilephone>9061234560</mobilephone>
     <workphone>44440</workphone>
     <photo>src\test\resources\sands.jpg</photo>
   </contact>
   <contact>
-    <firstname>firstname 1</firstname>
-    <lastname>lastname 1</lastname>
+    <firstname>firstname1</firstname>
+    <lastname>lastname1</lastname>
     <mail1>1test1@mail.ru</mail1>
     <mail2>1test2@mail.ru</mail2>
     <mail3>1test3@mail.ru</mail3>
-    <address>City, street, flat 1</address>
+    <address>City, street, flat1</address>
     <homephone>1234561</homephone>
-    <mobilephone>906123456 1</mobilephone>
+    <mobilephone>9061234561</mobilephone>
     <workphone>44441</workphone>
     <photo>src\test\resources\sands.jpg</photo>
   </contact>
   <contact>
-    <firstname>firstname 2</firstname>
-    <lastname>lastname 2</lastname>
+    <firstname>firstname2</firstname>
+    <lastname>lastname2</lastname>
     <mail1>2test1@mail.ru</mail1>
     <mail2>2test2@mail.ru</mail2>
     <mail3>2test3@mail.ru</mail3>
-    <address>City, street, flat 2</address>
+    <address>City, street, flat2</address>
     <homephone>1234562</homephone>
-    <mobilephone>906123456 2</mobilephone>
+    <mobilephone>9061234562</mobilephone>
     <workphone>44442</workphone>
     <photo>src\test\resources\sands.jpg</photo>
   </contact>

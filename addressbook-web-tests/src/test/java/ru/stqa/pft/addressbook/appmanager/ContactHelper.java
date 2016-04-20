@@ -162,8 +162,10 @@ public class ContactHelper extends HelperBase {
   public ContactData infoFromContactDetailedPage(ContactData contact) {
     initContactDetailedPageViewById(contact.getId());
     String detailsContent = wd.findElement(By.xpath("//*[@id='content']")).getText();
-    String errors = wd.findElement(By.xpath("//*[@id='content']/i")).getText();
-    String details = detailsContent.replace(errors,"");
+    String details = detailsContent;
+    /*если неправильно настроен сервер*/
+/*  String errors = wd.findElement(By.xpath("/[@id='content']/i")).getText();
+    String details = detailsContent.replace(errors,"");*/
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withDetails(details);
   }

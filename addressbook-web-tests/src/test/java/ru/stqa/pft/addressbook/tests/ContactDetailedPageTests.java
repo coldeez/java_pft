@@ -18,7 +18,7 @@ public class ContactDetailedPageTests extends TestBase {
   @Test
   public void testContactDetail() {
     app.contact().homePage();
-    ContactData contact = app.contact().all().iterator().next();
+    ContactData contact = app.db().contacts().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     ContactData contactInfoFromDetails = app.contact().infoFromContactDetailedPage(contact);
     assertThat(cleaned(mergeFromEditForm(contactInfoFromEditForm)), equalTo(cleaned(contactInfoFromDetails.getDetails())));

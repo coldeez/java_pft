@@ -68,11 +68,13 @@ public class ContactData {
   }
 
   public String getAllPhones() {
+    allPhones = getHomephone() +'\n' + getMobilephone()+'\n' + getWorkphone();
     return allPhones;
   }
 
 
   public String getAllEmails() {
+    allEmails = getEmail1() +'\n' + getEmail2()+'\n' + getEmail3();
     return allEmails;
   }
 
