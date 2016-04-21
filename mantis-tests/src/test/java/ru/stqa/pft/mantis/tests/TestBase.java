@@ -4,6 +4,7 @@ import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.mantis.appmanager.ApplicationManager;
+import ru.stqa.pft.mantis.appmanager.HttpSession;
 
 /**
  * Created by kbal on 02.03.2016.
@@ -21,5 +22,6 @@ public class TestBase {
   public void tearDown() {
     app.stop();
   }
+
 
 }
