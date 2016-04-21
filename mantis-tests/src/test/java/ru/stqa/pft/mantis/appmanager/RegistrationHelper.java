@@ -25,6 +25,6 @@ public class RegistrationHelper extends HelperBase{
     wd.get(confirmationLink);
     type(By.name("password"), password);
     type(By.name("password_confirm"), password);
-    click(By.cssSelector("input[value='Update_user']"));
+    click(By.cssSelector("input[value='Update User']"));
   }
 }
