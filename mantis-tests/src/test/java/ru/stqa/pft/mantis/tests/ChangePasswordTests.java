@@ -16,10 +16,10 @@ public class ChangePasswordTests extends  TestBase{
   public void testChangePassword() throws IOException {
 
     UserData user = app.db().users().iterator().next();
-    app.resetPassword().login("administrator", "root");
-    app.resetPassword().resetUserPassword(user.getId());
+    app.goTo().login("administrator", "root");
+    app.goTo().resetUserPassword(user.getId());
 
-/*    resetPassword();
+/*    goTo();
     findLinkInEmail(mailMessages, email, regex);
     goToLink(link);
     type();

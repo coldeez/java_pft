@@ -23,7 +23,7 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private DbHelper dbHelper;
-  private ResetPasswordHelper resetPasswordHelper;
+  private NavigationHelper navigationHelper;
 
 
   public ApplicationManager(String browser) {
@@ -91,11 +91,11 @@ public class ApplicationManager {
   public DbHelper db() {
     return dbHelper;
   }
-  public ResetPasswordHelper resetPassword() {
-    if (resetPasswordHelper == null){
-      resetPasswordHelper = new ResetPasswordHelper(this);
+  public NavigationHelper goTo() {
+    if (navigationHelper == null){
+      navigationHelper = new NavigationHelper(this);
     }
-    return resetPasswordHelper;
+    return navigationHelper;
   }
 
 }

@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 /**
  * Created by kbal on 21.04.2016.
  */
-public class ResetPasswordHelper extends HelperBase{
+public class NavigationHelper extends HelperBase{
 
-  public ResetPasswordHelper(ApplicationManager app) {
+  public NavigationHelper(ApplicationManager app) {
     super(app);
   }
 
