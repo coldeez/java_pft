@@ -1,8 +1,7 @@
 package ru.stqa.pft.mantis.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import ru.stqa.pft.mantis.tests.TestBase;
+
 
 /**
  * Created by kbal on 21.04.2016.
