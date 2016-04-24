@@ -35,7 +35,7 @@ public class TestBase {
     }
     return true;
   }
-  @BeforeMethod
+  @BeforeSuite
   public void skipIfNotFixed() throws IOException, ServiceException {
     List<String> list = new ArrayList<String>();
     BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/blockers_list.txt")));
