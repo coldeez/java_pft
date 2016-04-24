@@ -3,6 +3,7 @@ package ru.stqa.pft.mantis.tests;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.SkipException;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.mantis.appmanager.ApplicationManager;
 import ru.stqa.pft.mantis.appmanager.HttpSession;
@@ -29,23 +30,21 @@ public class TestBase {
 */
   }
   public boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-    if (app.soap().getIssueStatus(issueId) == "fixed") {
-      return true;
+        if (app.soap().getIssueStatus(issueId).equals("fixed")) {
+      return false;
     }
-    return false;
-
+    return true;
   }
-  @BeforeSuite
+  @BeforeMethod
   public void skipIfNotFixed() throws IOException, ServiceException {
     List<String> list = new ArrayList<String>();
     BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/blockers_list.txt")));
     String line = reader.readLine();
-    while (line !=null) {
+    while (line != null) {
       list.add(line);
       line = reader.readLine();
     }
-
-    for ( String issueId : list) {
+    for (String issueId : list) {
       if (isIssueOpen(Integer.parseInt(issueId))) {
         System.out.println("Ignored because of issue " + issueId);
         throw new SkipException("Ignored because of issue " + issueId);
@@ -53,11 +52,12 @@ public class TestBase {
     }
   }
 
+
+
+
   @AfterSuite(alwaysRun = true)
   public void tearDown() throws IOException {
-/*
-    app.ftp().restore("config_inc.php.bak","config_inc.php");
-*/
+/*    app.ftp().restore("config_inc.php.bak","config_inc.php");*/
     app.stop();
   }
 
