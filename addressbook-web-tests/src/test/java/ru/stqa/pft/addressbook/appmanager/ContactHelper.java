@@ -177,4 +177,24 @@ public class ContactHelper extends HelperBase {
     cells.get(6).findElement(By.tagName("a")).click();
   }
 
+  public void addContactToGroup(String groupname) {
+    ContactData contact = ApplicationManager.getInstance().db().contacts().iterator().next();
+    wd.findElement(By.cssSelector(String.format("input[value='%s']", contact.getId()))).click();
+    Select groups = new Select(wd.findElements(By.name("to_group")).get(0));
+    groups.selectByVisibleText(groupname);
+    wd.findElement(By.cssSelector("input[value='Add to'")).click();
+    System.out.println(groupname + " " + contact.getLastname());
+  }
+  public void deleteContactFromGroup() {
+    ContactData contact = ApplicationManager.getInstance().db().contacts().iterator().next();
+    Select groups = new Select(wd.findElements(By.name("group")).get(0));
+    String fromGroup = contact.getGroups().iterator().next().getName();
+    groups.selectByVisibleText(fromGroup);
+    wd.findElement(By.cssSelector(String.format("input[value='%s']", contact.getId()))).click();
+    wd.findElement(By.name("remove")).click();
+    System.out.println(fromGroup + " " + contact.getLastname());
+  }
+
+
+
 }

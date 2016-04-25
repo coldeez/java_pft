@@ -15,7 +15,7 @@ public class AddressbookKeywords {
   private ApplicationManager app;
 
   public void initApplicationManager() throws IOException {
-    app = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
+    app = ApplicationManager.getInstance();
     app.init();
   }
   public void stopApplicationManager() throws IOException {

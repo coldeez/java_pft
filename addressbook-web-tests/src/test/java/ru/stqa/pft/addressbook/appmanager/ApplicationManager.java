@@ -29,7 +29,16 @@ public class ApplicationManager {
   private String browser;
   private DbHelper dbHelper;
 
-  public ApplicationManager(String browser) {
+  public static ApplicationManager getInstance() {
+    if(instance == null) {
+      instance = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
+    }
+    return instance;
+  }
+
+  private static ApplicationManager instance;
+
+  private ApplicationManager(String browser) {
     this.browser = browser;
     properties = new Properties();
   }
