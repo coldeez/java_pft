@@ -7,8 +7,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
+import java.security.acl.Group;
 import java.util.List;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created by kbal on 03.03.2016.
@@ -177,22 +182,20 @@ public class ContactHelper extends HelperBase {
     cells.get(6).findElement(By.tagName("a")).click();
   }
 
-  public void addContactToGroup(String groupname) {
-    ContactData contact = ApplicationManager.getInstance().db().contacts().iterator().next();
+  public void addContactToGroup(ContactData contact, GroupData groupname) {
     wd.findElement(By.cssSelector(String.format("input[value='%s']", contact.getId()))).click();
     Select groups = new Select(wd.findElements(By.name("to_group")).get(0));
-    groups.selectByVisibleText(groupname);
+    groups.selectByVisibleText(groupname.getName());
     wd.findElement(By.cssSelector("input[value='Add to'")).click();
-    System.out.println(groupname + " " + contact.getLastname());
+
   }
-  public void deleteContactFromGroup() {
-    ContactData contact = ApplicationManager.getInstance().db().contacts().iterator().next();
+
+  public void deleteContactFromGroup(ContactData contact, GroupData fromGroup) {
+
     Select groups = new Select(wd.findElements(By.name("group")).get(0));
-    String fromGroup = contact.getGroups().iterator().next().getName();
-    groups.selectByVisibleText(fromGroup);
+    groups.selectByVisibleText(fromGroup.getName());
     wd.findElement(By.cssSelector(String.format("input[value='%s']", contact.getId()))).click();
     wd.findElement(By.name("remove")).click();
-    System.out.println(fromGroup + " " + contact.getLastname());
   }
 
 
