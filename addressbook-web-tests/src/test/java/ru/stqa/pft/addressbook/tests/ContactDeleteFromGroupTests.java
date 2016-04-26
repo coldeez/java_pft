@@ -52,7 +52,6 @@ public class ContactDeleteFromGroupTests extends TestBase {
     before.remove(fromGroup);
     assertThat(before, equalTo(app.db().contacts().stream().
             filter(c -> c.getId() == contact.getId()).findFirst().get().getGroups()));
-
     System.out.println(contact.getFullname() + " deleted from " + fromGroup.getName());
   }
 }

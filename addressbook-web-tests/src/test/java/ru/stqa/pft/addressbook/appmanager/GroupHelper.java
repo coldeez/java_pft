@@ -28,6 +28,9 @@ public class GroupHelper extends HelperBase {
     }
     click(By.linkText("group page"));
   }
+  public void ToGroupPage() {
+    click(By.linkText("groups"));
+  }
 
   public void submitGroupCreation() {
     click(By.name("submit"));
@@ -60,6 +63,7 @@ public class GroupHelper extends HelperBase {
   }
 
   public void create(GroupData group) {
+    ToGroupPage();
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();

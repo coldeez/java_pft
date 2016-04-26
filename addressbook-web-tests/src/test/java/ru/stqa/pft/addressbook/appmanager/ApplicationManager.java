@@ -28,6 +28,7 @@ public class ApplicationManager {
   private GroupHelper groupHelper;
   private String browser;
   private DbHelper dbHelper;
+  private static ApplicationManager instance;
 
   public static ApplicationManager getInstance() {
     if(instance == null) {
@@ -36,7 +37,7 @@ public class ApplicationManager {
     return instance;
   }
 
-  private static ApplicationManager instance;
+
 
   private ApplicationManager(String browser) {
     this.browser = browser;
